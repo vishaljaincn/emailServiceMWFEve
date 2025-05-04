@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.naman.emailservicemwfeve.dtos.SendEmailEventDto;
 import dev.naman.emailservicemwfeve.utils.EmailUtil;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
-//
 
 @Service
 public class SendEmailEventConsumer {
@@ -46,6 +46,6 @@ public class SendEmailEventConsumer {
         };
         Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, to,subject, body);
+        EmailUtil.sendEmail(session, to, subject, body);
     }
 }
